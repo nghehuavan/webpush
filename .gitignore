@@ -577,3 +577,4 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/yarn,visualstudio,visualstudiocode,node
 /package-lock.json
+/yarn.lock
