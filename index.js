@@ -32,7 +32,7 @@ app.post('/subscribe', (req, res) => {
   const payload = JSON.stringify({
     title: 'Push notifications From Server',
   });
-
+console.log(subscription);
   webPush.sendNotification(subscription, payload)
     .catch(error => console.error(error));
 });
