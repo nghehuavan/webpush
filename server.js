@@ -28,7 +28,7 @@ async function startup() {
 
     // save to db: map user <=> subscription json
     const key = 'someUserId'; // should change on every user by token
-    await db.query('INSERT INTO subscriptions(key,data) VALUES($key,$data) ON CONFLICT(key) DO UPDATE SET data = $data', {
+    await db.query('INSERT INTO "subscriptions" ("key","data") VALUES($key,$data) ON CONFLICT("key") DO UPDATE SET "data" = $data', {
       bind: { key: key, data: JSON.stringify(subscription) },
       type: QueryTypes.INSERT,
     });
@@ -40,7 +40,7 @@ async function startup() {
     const message = req.body;
 
     const key = 'someUserId'; // should change on every user by token
-    const rows = await db.query('SELECT * FROM subscriptions WHERE key = $$key', {
+    const rows = await db.query('SELECT * FROM "subscriptions" WHERE "key" = $$key', {
       bind: { key: key },
       type: QueryTypes.SELECT,
     });
@@ -56,7 +56,7 @@ async function startup() {
   });
 
   app.get('/db', async (req, res) => {
-    const rows = await db.query('SELECT * FROM subscriptions', {
+    const rows = await db.query('SELECT * FROM "subscriptions"', {
       type: QueryTypes.SELECT,
     });
 
@@ -70,15 +70,15 @@ async function startup() {
   });
 }
 
-// connect database Sqlite by sequelize ORM
+// connect database Sqlite in-memory by sequelize ORM
 connectDb = async () => {
-  const db = new Sequelize({
-    dialect: 'sqlite',
-    storage: './webpush.db',
+  const db = new Sequelize('sqlite::memory:', {
     logging: false,
   });
   try {
     await db.authenticate();
+    const initSql = 'CREATE TABLE IF NOT EXISTS "subscriptions" ("key" TEXT NOT NULL, "data" TEXT, PRIMARY KEY ("key" ASC))';
+    await db.query(initSql);
     console.log('Database connection has been established successfully.');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
