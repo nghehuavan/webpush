@@ -1,9 +1,9 @@
-const triggerSubscription = document.querySelector('.trigger-subscription');
-triggerPush.addEventListener('click', () => {
+const triggerSubscription = document.getElementById('trigger-subscription');
+triggerSubscription.addEventListener('click', () => {
   registWebPush();
 });
 
-const triggerPush = document.querySelector('.trigger-push');
+const triggerPush = document.getElementById('trigger-push');
 triggerPush.addEventListener('click', () => {
   tryPush();
 });
@@ -14,7 +14,7 @@ async function registWebPush() {
 }
 
 async function tryPush() {
-  await fetch('/subscribe', {
+  await fetch('/push', {
     method: 'POST',
     body: JSON.stringify({ title: 'Push notifications From Server' }),
     headers: {
