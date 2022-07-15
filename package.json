@@ -2,17 +2,17 @@
   "name": "node-push",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node server.js",
+    "dev": "run.bat"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "dotenv": "^6.2.0",
+    "cyclic-dynamodb": "^0.0.27",
     "express": "^4.16.4",
     "nodemon": "^2.0.19",
     "web-push": "^3.3.3"
