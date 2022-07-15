@@ -1,6 +1,6 @@
 ## Run live on cyclic.sh
 
-3. Go to [https://long-lime-crow-yoke.cyclic.app](https://long-lime-crow-yoke.cyclic.app)
+3. Go to [https://hvn-webpush.cyclic.app](https://hvn-webpush.cyclic.app)
 
 ## Running the sample
 
