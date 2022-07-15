@@ -16,8 +16,8 @@ const vapidKeys = webPush.generateVAPIDKeys();
 
 console.log(vapidKeys);
 
-const publicVapidKey = process.env.PUBLIC_VAPID_KEY;
-const privateVapidKey = process.env.PRIVATE_VAPID_KEY;
+const publicVapidKey = "BAJQxEDFDWhOHnjtXw2AqcYXJlS0oGYpfJvwsOxCTYq8gM1_vvkyyL4kl4rIdytt5zhvVPZHyGeP-CeD8Szc69Y";
+const privateVapidKey = "bBGAR9h95vBmWvLKSjJDw6PJbK64ve77m6LfGMzacuI";
 
 webPush.setVapidDetails('mailto:test@example.com', publicVapidKey, privateVapidKey);
 
@@ -37,7 +37,7 @@ console.log(subscription);
     .catch(error => console.error(error));
 });
 
-app.set('port', process.env.PORT || 5000);
+app.set('port', 8080);
 const server = app.listen(app.get('port'), () => {
   console.log(`Express running → PORT ${server.address().port}`);
 });
